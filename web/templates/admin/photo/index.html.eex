@@ -16,7 +16,7 @@
     <tr>
     <td><%= photo.description %></td>
     <td><%= photo.category && photo.category.title %></td>
-    <td><%= photo.file %></td>
+    <td><img width="100" height="100" src="/images/portfolio/<%= photo.file %>" /></td>
 
     <td class="text-right">
       <%= link "Show", to: photo_path(@conn, :show, photo), class: "btn btn-default btn-xs" %>

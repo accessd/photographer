@@ -19,7 +19,18 @@ defmodule Photographer.Photo do
   with no validation performed.
   """
   def changeset(model, params \\ :empty) do
+    if is_map(params) do
+      %{"photo" => %Plug.Upload{filename: filename, path: temp_file_path}} = params
+      params = Map.put(params, "file", filename)
+      save_file(temp_file_path, filename)
+    end
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  defp save_file(temp_file_path, original_file_name) do
+    {:ok, basepath} = File.cwd
+    File.cp! temp_file_path,
+    "#{basepath}/priv/static/images/portfolio/#{original_file_name}"
   end
 end
