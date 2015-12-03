@@ -8,7 +8,9 @@ exports.config = {
       // https://github.com/brunch/brunch/blob/stable/docs/config.md#files
       joinTo: {
        "js/app.js": /^(web\/static\/js)/,
-       "js/vendor.js": /^(web\/static\/vendor)|(deps)/
+       "js/admin/app.js": /^(web\/static\/js\/admin)/,
+       "js/vendor.js": /^(web\/static\/vendor)|(deps)/,
+       "js/admin/vendor.js": /^(bower_components)|(deps)/
       },
       //
       // To change the order of concatenation of files, explicitly mention here
@@ -23,7 +25,9 @@ exports.config = {
     stylesheets: {
         joinTo: {
             "css/app.css": /^(web\/static\/css)/,
-            "css/vendor.css": /^(web\/static\/vendor)/
+            "css/admin/app.css": /^(web\/static\/css\/admin)/,
+            "css/vendor.css": /^(web\/static\/vendor)/,
+            "css/admin/vendor.css": /^(bower_components)/
         }
     },
     templates: {
@@ -62,7 +66,8 @@ exports.config = {
 
   modules: {
     autoRequire: {
-      "js/app.js": ["web/static/js/app"]
+      "js/app.js": ["web/static/js/app"],
+      "js/admin/app.js": ["web/static/js/admin/app"]
     }
   },
 

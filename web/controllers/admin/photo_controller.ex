@@ -2,6 +2,7 @@ defmodule Photographer.Admin.PhotoController do
   use Photographer.Web, :controller
 
   alias Photographer.Photo
+  plug :put_layout, "admin.html"
 
   plug :scrub_params, "photo" when action in [:create, :update]
 

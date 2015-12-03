@@ -1,0 +1,19 @@
+{
+    "name": "photographer",
+    "version": "0.0.1",
+    "homepage": "https://github.com/accessd/photographer",
+    "authors": [
+        "Accessd <accessd0@gmail.com>"
+        ],
+    "dependencies": {
+        "bootstrap": ">= 3.3.6"
+    },
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+        ]
+}

@@ -1,6 +1,7 @@
-<h2>Listing photos</h2>
+<h2 class="sub-header">Listing photos</h2>
 
-<table class="table">
+<div class="table-responsive">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Description</th>
@@ -11,20 +12,21 @@
     </tr>
   </thead>
   <tbody>
-<%= for photo <- @photos do %>
+  <%= for photo <- @photos do %>
     <tr>
-      <td><%= photo.description %></td>
-      <td><%= photo.category && photo.category.title %></td>
-      <td><%= photo.file %></td>
+    <td><%= photo.description %></td>
+    <td><%= photo.category && photo.category.title %></td>
+    <td><%= photo.file %></td>
 
-      <td class="text-right">
-        <%= link "Show", to: photo_path(@conn, :show, photo), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: photo_path(@conn, :edit, photo), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: photo_path(@conn, :delete, photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
+    <td class="text-right">
+      <%= link "Show", to: photo_path(@conn, :show, photo), class: "btn btn-default btn-xs" %>
+      <%= link "Edit", to: photo_path(@conn, :edit, photo), class: "btn btn-default btn-xs" %>
+      <%= link "Delete", to: photo_path(@conn, :delete, photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+    </td>
+  </tr>
 <% end %>
   </tbody>
 </table>
+</div>
 
 <%= link "New photo", to: photo_path(@conn, :new) %>
