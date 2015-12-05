@@ -1,6 +1,14 @@
 <h2 class="sub-header">Listing photos</h2>
 
 <div class="table-responsive">
+
+<%= form_for @conn, photo_path(@conn, :index), [name: :search, method: :get], fn f -> %>
+  <div class="form-group" style="width: 200px;">
+    <%= label f, :category, "Category", class: "control-label" %>
+    <%= select f, :category_id, categories, class: "form-control" %>
+  </div>
+  <%= submit "Search", class: "btn btn-primary" %>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>

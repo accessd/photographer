@@ -6,8 +6,17 @@ defmodule Photographer.Admin.PhotoController do
 
   plug :scrub_params, "photo" when action in [:create, :update]
 
-  def index(conn, _params) do
-    photos = Repo.all(Photo) |> Repo.preload [:category]
+  def index(conn, params) do
+    {:ok, category_id} = Ecto.Type.cast(:integer, params["search"]["category_id"])
+    photos = if is_nil(category_id) do
+      Repo.all(Photo)
+    else
+      Repo.all(
+      from p in Photo,
+      where: p.category_id == ^category_id,
+      select: p
+      )
+    end |> Repo.preload [:category]
     render(conn, "index.html", photos: photos)
   end
 
