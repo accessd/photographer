@@ -9,6 +9,8 @@ defmodule Photographer.Photo do
     timestamps
   end
 
+  after_delete :delete_file
+
   @required_fields ~w(description file category_id)
   @optional_fields ~w()
 
@@ -19,7 +21,7 @@ defmodule Photographer.Photo do
   with no validation performed.
   """
   def changeset(model, params \\ :empty) do
-    if is_map(params) do
+    if is_map(params) && params["photo"] do
       %{"photo" => %Plug.Upload{filename: filename, path: temp_file_path}} = params
       params = Map.put(params, "file", filename)
       save_file(temp_file_path, filename)
@@ -28,9 +30,20 @@ defmodule Photographer.Photo do
     |> cast(params, @required_fields, @optional_fields)
   end
 
-  defp save_file(temp_file_path, original_file_name) do
+  defp file_path(filename) do
     {:ok, basepath} = File.cwd
-    File.cp! temp_file_path,
-    "#{basepath}/priv/static/images/portfolio/#{original_file_name}"
+    "#{basepath}/priv/static/images/portfolio/#{filename}"
+  end
+
+  defp save_file(temp_file_path, original_file_name) do
+    File.cp! temp_file_path, file_path(original_file_name)
+  end
+
+  defp delete_file(changeset) do
+    changeset
+    |> Ecto.Changeset.get_field(:file)
+    |> file_path
+    |> File.rm
+    changeset
   end
 end
