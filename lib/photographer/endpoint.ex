@@ -35,5 +35,6 @@ defmodule Photographer.Endpoint do
     key: "_photographer_key",
     signing_salt: "9A+mfM0z"
 
+  plug Photographer.RedirectsPlug, %{"/admin" => "/admin/photos"}
   plug Photographer.Router
 end

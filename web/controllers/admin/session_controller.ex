@@ -6,7 +6,6 @@ defmodule Photographer.Admin.SessionController do
 
   plug :scrub_params, "user" when action in [:create]
   plug :action
-  require IEx
 
   def new(conn, params) do
     changeset = User.login_changeset(%User{})
