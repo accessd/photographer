@@ -1,0 +1,59 @@
+defmodule Photographer.Admin.SessionController do
+  use Photographer.Web, :controller
+
+  alias Photographer.User
+  alias Photographer.UserQuery
+
+  plug :scrub_params, "user" when action in [:create]
+  plug :action
+  require IEx
+
+  def new(conn, params) do
+    changeset = User.login_changeset(%User{})
+    render(conn, Photographer.Admin.SessionView, "new.html", changeset: changeset)
+  end
+
+  def create(conn, params = %{}) do
+    user = Repo.one(UserQuery.by_email(params["user"]["email"] || ""))
+    if user do
+      changeset = User.login_changeset(user, params["user"])
+      if changeset.valid? do
+        conn
+        |> put_flash(:info, "Logged in.")
+        |> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })
+        |> redirect(to: photo_path(conn, :index))
+        |> halt
+      else
+        render(conn, "new.html", changeset: changeset)
+      end
+    else
+      changeset = User.login_changeset(%User{}) |> Ecto.Changeset.add_error(:login, "not found")
+      render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def delete(conn, _params) do
+    Guardian.Plug.sign_out(conn)
+    |> put_flash(:info, "Logged out successfully.")
+    |> redirect(to: "/admin/photos")
+  end
+
+  def unauthenticated_api(conn, _params) do
+    the_conn = put_status(conn, 401)
+    case Guardian.Plug.claims(conn) do
+      { :error, :no_session } -> json(the_conn, %{ error: "Login required" })
+      { :error, reason } -> json(the_conn, %{ error: reason })
+      _ -> json(the_conn, %{ error: "Login required" })
+    end
+  end
+
+  def unauthenticated(conn, params) do
+    new(conn, params)
+  end
+
+  def forbidden_api(conn, _) do
+    conn
+    |> put_status(403)
+    |> json(%{ error: :forbidden })
+  end
+end

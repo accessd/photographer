@@ -2,6 +2,7 @@ defmodule Photographer.Admin.CategoryController do
   use Photographer.Web, :controller
 
   alias Photographer.Category
+  plug Guardian.Plug.EnsureAuthenticated, handler: SessionController
   plug :put_layout, "admin.html"
 
   plug :scrub_params, "category" when action in [:create, :update]

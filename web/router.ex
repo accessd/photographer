@@ -9,16 +9,26 @@ defmodule Photographer.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", Photographer do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :browser_session] # Use the default browser stack
 
     get "/", PageController, :index
     resources "/admin/categories", Admin.CategoryController
     resources "/admin/photos", Admin.PhotoController
+
+    get "/admin/login", Admin.SessionController, :new, as: :login
+    post "/admin/login", Admin.SessionController, :create, as: :login
+    delete "/admin/logout", Admin.SessionController, :delete, as: :logout
+    get "/admin/logout", Admin.SessionController, :delete, as: :logout
   end
 
   # Other scopes may use custom stacks.
