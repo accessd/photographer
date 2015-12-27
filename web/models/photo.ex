@@ -4,6 +4,7 @@ defmodule Photographer.Photo do
   schema "photos" do
     field :description, :string
     field :file, :string
+    field :cover, :boolean
     belongs_to :category, Photographer.Category
 
     timestamps
@@ -12,7 +13,7 @@ defmodule Photographer.Photo do
   after_delete :delete_file
 
   @required_fields ~w(description file category_id)
-  @optional_fields ~w()
+  @optional_fields ~w(cover)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

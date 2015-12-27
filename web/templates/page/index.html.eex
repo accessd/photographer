@@ -13,18 +13,13 @@
                 Evgeniia Morskova
               </a>
               <!-- #Logo Ends -->
-
-
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-
             </div>
-
-
             <!-- Nav Starts -->
             <div class="navbar-collapse  collapse">
               <ul class="nav navbar-nav navbar-right scroll">
@@ -42,118 +37,23 @@
     </div>
 <!-- #Header Starts -->
 
-
 <!-- works -->
-<div id="works"  class=" clearfix grid">
-    <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/1.jpg" alt="img01"/>
+<div id="works" class="clearfix grid">
+  <%= for {category, cover} <- @categories do %>
+    <figure class="effect-oscar wowload fadeInUp">
+      <img src="images/portfolio/<%= cover %>" alt=""/>
         <figcaption>
-            <h2>Nature</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/1.jpg" title="1" data-gallery>View more</a></p>
-            <a href="images/portfolio/1.jpg" title="1" data-gallery>View more</a></p>
-            <a href="images/portfolio/1.jpg" title="1" data-gallery>View more</a></p>
+            <h2><%= category.title %></h2>
+            <p><br>
+            <%= for photo <- category.photos do %>
+                <a href="images/portfolio/<%= photo.file %>" title="<%= photo.description %>" data-gallery="#<%= category.title %>">View more</a>
+            </p>
+            <% end %>
         </figcaption>
     </figure>
-     <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/2.jpg" alt="img01"/>
-        <figcaption>
-            <h2>Events</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/2.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-     <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/3.jpg" alt="img01"/>
-        <figcaption>
-            <h2>music</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/3.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-     <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/4.jpg" alt="img01"/>
-        <figcaption>
-            <h2>Vintage</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/4.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-     <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/5.jpg" alt="img01"/>
-        <figcaption>
-            <h2>Typers</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/5.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-
-     <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/6.jpg" alt="img01"/>
-        <figcaption>
-            <h2>hotel</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/6.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-    <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/7.jpg" alt="img01"/>
-        <figcaption>
-            <h2>Chinese</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/7.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-    <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/8.jpg" alt="img01"/>
-        <figcaption>
-            <h2>Dicrap</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/8.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-    <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/9.jpg" alt="img01"/>
-        <figcaption>
-            <h2>Coffee</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/9.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-    <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/10.jpg" alt="img01"/>
-        <figcaption>
-            <h2>cameras</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/10.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-    <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/11.jpg" alt="img01"/>
-        <figcaption>
-            <h2>design</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/11.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-    <figure class="effect-oscar  wowload fadeInUp">
-        <img src="images/portfolio/12.jpg" alt="img01"/>
-        <figcaption>
-            <h2>studio</h2>
-            <p>Lily likes to play with crayons and pencils<br>
-            <a href="images/portfolio/12.jpg" title="1" data-gallery>View more</a></p>
-        </figcaption>
-    </figure>
-
-
-
+  <% end %>
 </div>
 <!-- works -->
-
-
-
-
-
 
 <!-- Cirlce Starts -->
 <div id="about"  class="container spacer about">
@@ -162,8 +62,6 @@
   <div class="col-sm-6 wowload fadeInLeft">
     <h4><i class="fa fa-paint-brush"></i> Design</h4>
     <p>Creative digital agency for sleek and sophisticated solutions for mobile, websites and software designs, lead by passionate and uber progressive team that lives and breathes design. Creative digital agency for sleek and sophisticated solutions for mobile, websites and software designs.</p>
-
-
   </div>
   <div class="col-sm-6 wowload fadeInRight">
   <h4><i class="fa fa-code"></i> Frontend & Backend Development</h4>
@@ -175,7 +73,6 @@
 <!-- #Cirlce Ends -->
 
 </div>
-
 
 <!--Contact Starts-->
 <div id="contact" class="spacer">
@@ -189,12 +86,9 @@
         <button class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
       </div>
   </div>
-
 </div>
 </div>
 <!--Contact Ends-->
-
-
 
 <!-- Footer Starts -->
 <div class="footer text-center spacer">
@@ -203,9 +97,6 @@ Copyright 2015 Evgeniia Morskova. All rights reserved.
 </div>
 <!-- # Footer Ends -->
 <a href="#works" class="gototop "><i class="fa fa-angle-up  fa-3x"></i></a>
-
-
-
 
 
 <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->

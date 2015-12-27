@@ -1,5 +1,7 @@
 defmodule Photographer.Category do
   use Photographer.Web, :model
+  import Ecto.Query
+  alias Photographer.Photo
 
   schema "categories" do
     field :title, :string
@@ -20,5 +22,15 @@ defmodule Photographer.Category do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def with_photos(query) do
+    photos_query = from p in Photo,
+      order_by: [desc: p.cover]
+    from c in query,
+      left_join: p in assoc(c, :photos),
+      where: p.cover == true,
+      select: {c, p.file},
+      preload: [photos: ^photos_query]
   end
 end
