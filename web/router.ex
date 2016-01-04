@@ -22,6 +22,7 @@ defmodule Photographer.Router do
     pipe_through [:browser, :browser_session] # Use the default browser stack
 
     get "/", PageController, :index
+    post "/send_message", PageController, :send_message, as: :send_message
     resources "/admin/categories", Admin.CategoryController
     resources "/admin/photos", Admin.PhotoController
 
