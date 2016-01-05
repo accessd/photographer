@@ -23,6 +23,11 @@ config :photographer, Photographer.Repo,
   database: "db/photographer_prod.sqlite",
   pool_size: 20
 
+config :photographer,
+  mailgun_domain: System.get_env("MAILGUN_DOMAIN"),
+  mailgun_key: System.get_env("MAILGUN_KEY"),
+  recepient_email: System.get_env("EMAIL")
+
 # Do not print debug messages in production
 config :logger, level: :info
 
