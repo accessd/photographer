@@ -19,8 +19,8 @@ config :photographer, Photographer.Endpoint,
   secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 config :photographer, Photographer.Repo,
-  adapter: Sqlite.Ecto,
-  database: "db/photographer_prod.sqlite",
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL"),
   pool_size: 20
 
 config :photographer,
