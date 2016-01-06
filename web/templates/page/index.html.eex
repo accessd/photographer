@@ -57,16 +57,12 @@
 
 <!-- Cirlce Starts -->
 <div id="about"  class="container spacer about">
-<h2 class="text-center wowload fadeInUp">Creative digital agency based on London</h2>
+<h2 class="text-center wowload fadeInUp">About me</h2>
   <div class="row">
-  <div class="col-sm-6 wowload fadeInLeft">
-    <h4><i class="fa fa-paint-brush"></i> Design</h4>
-    <p>Creative digital agency for sleek and sophisticated solutions for mobile, websites and software designs, lead by passionate and uber progressive team that lives and breathes design. Creative digital agency for sleek and sophisticated solutions for mobile, websites and software designs.</p>
-  </div>
-  <div class="col-sm-6 wowload fadeInRight">
-  <h4><i class="fa fa-code"></i> Frontend & Backend Development</h4>
-  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-  </div>
+    <div class="col-sm-12 wowload fadeInLeft">
+      <h4><i class="fa fa-camera"></i>Photography</h4>
+      <p>Hello! My name is Evgeniia. I'm keen on photography. Here is some of my works.</p>
+    </div>
   </div>
 
 </div>
@@ -78,7 +74,7 @@
 <div id="contact" class="spacer">
 
 <div class="container contactform center">
-<h2 class="text-center  wowload fadeInUp">Get in touch to start your project</h2>
+<h2 class="text-center wowload fadeInUp">Send me a message</h2>
   <div class="row wowload fadeInLeftBig">
       <div class="col-sm-6 col-sm-offset-3 col-xs-12">
         <%= form_tag(send_message_path(@conn, :send_message)) do %>
@@ -94,7 +90,11 @@
 
 <!-- Footer Starts -->
 <div class="footer text-center spacer">
-<p class="wowload flipInX"><a href="#"><i class="fa fa-facebook fa-2x"></i></a> <a href="#"><i class="fa fa-instagram fa-2x"></i></a> <a href="#"><i class="fa fa-twitter fa-2x"></i></a> <a href="#"><i class="fa fa-flickr fa-2x"></i></a> </p>
+  <p class="wowload flipInX">
+  <a href="https://www.facebook.com/profile.php?id=100001734268108" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+  <a href="https://www.instagram.com/evgeniya_morskova" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+  <a href="https://www.flickr.com/photos/morskova" target="_blank"><i class="fa fa-flickr fa-2x"></i></a>
+  </p>
 Copyright 2015 Evgeniia Morskova. All rights reserved.
 </div>
 <!-- # Footer Ends -->
