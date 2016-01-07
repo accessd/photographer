@@ -24,11 +24,17 @@ defmodule Photographer.Photo do
   def changeset(model, params \\ :empty) do
     if is_map(params) && params["photo"] do
       %{"photo" => %Plug.Upload{filename: filename, path: temp_file_path}} = params
-      params = Map.put(params, "file", filename)
-      save_file(temp_file_path, filename)
+      filename_with_timestamp = "#{timestamp}-#{filename}"
+      params = Map.put(params, "file", filename_with_timestamp)
+      save_file(temp_file_path, filename_with_timestamp)
     end
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  defp timestamp do
+    {megasec, sec, _microsec} = :os.timestamp
+    megasec * 1000000 + sec
   end
 
   defp file_path(filename) do
