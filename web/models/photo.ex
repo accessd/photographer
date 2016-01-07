@@ -12,8 +12,8 @@ defmodule Photographer.Photo do
 
   after_delete :delete_file
 
-  @required_fields ~w(description file category_id)
-  @optional_fields ~w(cover)
+  @required_fields ~w(file category_id)
+  @optional_fields ~w(description cover)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
