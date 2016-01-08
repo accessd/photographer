@@ -10,7 +10,7 @@
               <!-- Logo Starts -->
               <a class="navbar-brand" href="#home" style="font-size: 33px; margin-top: 17px;">
                 <!-- <img src="images/logo.png" alt="logo"> -->
-                Evgeniia Morskova
+                Evgeniya Morskova
               </a>
               <!-- #Logo Ends -->
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -61,7 +61,7 @@
   <div class="row">
     <div class="col-sm-12 wowload fadeInLeft">
       <h4><i class="fa fa-camera"></i>Photography</h4>
-      <p>Hello! My name is Evgeniia. I'm keen on photography. Here is some of my works.</p>
+      <p>Hello! My name is Evgeniya. I'm keen on photography. Here is some of my works.</p>
     </div>
   </div>
 
@@ -95,7 +95,7 @@
   <a href="https://www.instagram.com/evgeniya_morskova" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
   <a href="https://www.flickr.com/photos/morskova" target="_blank"><i class="fa fa-flickr fa-2x"></i></a>
   </p>
-Copyright 2015 Evgeniia Morskova. All rights reserved.
+Copyright 2016 Evgeniya Morskova. All rights reserved.
 </div>
 <!-- # Footer Ends -->
 <a href="#works" class="gototop "><i class="fa fa-angle-up  fa-3x"></i></a>

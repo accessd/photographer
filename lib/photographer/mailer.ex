@@ -6,7 +6,7 @@ defmodule Photographer.Mailer do
   def send_message_email(name, message) do
     send_email to: Application.get_env(:photographer, :recepient_email),
     from: "noreply@example.com",
-    subject: "New message from Evgeniia site!",
+    subject: "New message from Evgeniya site!",
     text: "Name: #{name} Message: #{message}"
   end
 end
