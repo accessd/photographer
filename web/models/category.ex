@@ -26,7 +26,7 @@ defmodule Photographer.Category do
 
   def with_photos(query) do
     photos_query = from p in Photo,
-      order_by: [desc: p.cover]
+      order_by: [desc: p.cover, asc: p.id]
     from c in query,
       left_join: p in assoc(c, :photos),
       where: p.cover == true,
